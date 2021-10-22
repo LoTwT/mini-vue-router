@@ -7,7 +7,12 @@ export default {
     if (!route) return
 
     const { component } = route
-    return <component />
+    const hook = {
+      init(vnode) {
+        route.instance = vnode.componentInstance
+      },
+    }
+    return <component hook={hook} />
   },
 }
 </script>
